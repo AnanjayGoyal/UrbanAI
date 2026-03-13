@@ -1,0 +1,109 @@
+city,neighborhood,latitude,longitude,safety_score,transport_score,greenery_score,market_score,healthcare_score,schools_score,lifestyle_score,avg_rent_1bhk,avg_rent_2bhk,avg_rent_3bhk,cost_of_living_index,population_density,known_for
+Mumbai,Bandra West,19.0596,72.8295,78,88,62,92,85,80,90,45000,75000,120000,82,28000,Cafes, nightlife, celebrities, sea-link view
+Mumbai,Andheri West,19.1364,72.8296,72,90,55,90,82,78,84,28000,48000,80000,75,35000,Airport proximity, IT offices, malls
+Mumbai,Powai,19.1196,72.9060,82,75,78,85,88,85,85,25000,42000,70000,72,18000,Lake view, IIT Bombay, tech companies
+Mumbai,Juhu,19.1075,72.8263,80,70,65,85,80,75,88,55000,90000,150000,85,15000,Beach, Bollywood, premium housing
+Mumbai,Goregaon East,19.1663,72.8526,70,85,58,88,78,80,78,22000,38000,62000,68,32000,Film City, Oberoi Mall, metro
+Mumbai,Malad West,19.1887,72.8491,68,84,52,87,75,76,75,20000,34000,55000,65,38000,Inorbit Mall, Link Road, metro access
+Mumbai,Chembur,19.0626,72.8993,72,80,60,84,80,78,77,18000,30000,50000,64,30000,Eastern Express Highway, peaceful
+Mumbai,Thane West,19.2183,72.9781,75,82,70,88,82,82,80,16000,28000,45000,62,25000,Lake city, green spaces, IT hub
+Mumbai,Navi Mumbai Vashi,19.0771,73.0071,80,85,72,90,85,85,82,14000,24000,40000,60,22000,Planned city, clean, affordable
+Mumbai,Kandivali East,19.2043,72.8619,70,80,55,85,75,78,74,18000,30000,48000,63,33000,Ram Mandir, suburban, affordable
+Mumbai,Lower Parel,18.9940,72.8282,74,85,40,88,82,72,86,40000,65000,110000,80,22000,Corporate hub, nightlife, BKC nearby
+Mumbai,Worli,19.0176,72.8180,76,80,45,85,84,74,85,55000,85000,140000,82,20000,Sea face, luxury towers, Bandra-Worli link
+Delhi,Hauz Khas,28.5494,77.2001,74,82,75,90,85,85,92,30000,55000,90000,78,18000,Art galleries, nightlife, IIT Delhi
+Delhi,Dwarka,28.5921,77.0460,76,88,68,88,82,84,80,15000,25000,40000,62,28000,Metro city, planned sector, affordable
+Delhi,Saket,28.5245,77.2066,78,82,70,90,88,85,85,28000,48000,80000,76,20000,Select Citywalk, South Delhi premium
+Delhi,Vasant Kunj,28.5223,77.1569,80,75,78,85,85,85,86,25000,42000,70000,74,15000,DLF Mall, green, posh colony
+Delhi,Lajpat Nagar,28.5677,77.2433,72,85,55,92,80,78,84,22000,38000,62000,72,30000,Shopping hub, South Delhi location
+Delhi,Rohini,28.7041,77.1025,70,85,62,87,78,80,76,14000,24000,40000,62,32000,Affordable, metro, family area
+Delhi,Janakpuri,28.6219,77.0822,74,82,60,85,80,80,78,16000,28000,45000,64,28000,West Delhi, peaceful, metro access
+Delhi,Greater Kailash,28.5489,77.2310,80,78,72,88,85,85,88,35000,58000,95000,80,16000,GK1/GK2, posh, market hub
+Delhi,Pitampura,28.7098,77.1308,72,84,58,86,78,80,76,16000,27000,44000,63,30000,North Delhi, metro, affordable
+Delhi,Mayur Vihar,28.6084,77.2982,75,86,65,85,80,80,78,18000,30000,48000,65,26000,East Delhi, metro, family area
+Delhi,Rajouri Garden,28.6462,77.1198,72,85,55,88,78,76,78,18000,30000,50000,66,32000,West Delhi, TDI Mall, metro
+Delhi,Noida Sector 62,28.6271,77.3649,78,85,65,88,82,85,82,16000,28000,45000,65,22000,IT hub, metro, planned
+Bangalore,Koramangala,12.9352,77.6245,78,80,68,92,88,82,92,28000,48000,80000,78,22000,Startups, cafes, nightlife, IT hub
+Bangalore,Indiranagar,12.9784,77.6408,80,82,70,90,85,80,90,30000,52000,85000,80,20000,100 Feet Road, pubs, premium
+Bangalore,Whitefield,12.9698,77.7500,75,72,65,85,80,80,82,20000,35000,58000,70,18000,IT corridor, malls, gated communities
+Bangalore,HSR Layout,12.9116,77.6389,80,78,72,88,85,85,86,25000,42000,70000,76,18000,Planned layout, families, IT proximity
+Bangalore,Electronic City,12.8399,77.6770,72,70,60,80,75,75,75,14000,24000,40000,62,22000,IT hub, affordable, Infosys campus
+Bangalore,Bellandur,12.9257,77.6760,74,72,62,82,78,78,78,18000,30000,50000,65,20000,Outer Ring Road, IT, lakes nearby
+Bangalore,Jayanagar,12.9299,77.5847,82,80,75,88,88,88,86,20000,35000,58000,74,20000,Old Bangalore, trees, culture
+Bangalore,Banashankari,12.9248,77.5471,78,78,72,86,85,85,82,18000,30000,50000,70,22000,South Bangalore, temples, peaceful
+Bangalore,Marathahalli,12.9591,77.6971,72,74,60,86,78,78,78,16000,28000,46000,66,28000,IT corridor, malls, affordable
+Bangalore,BTM Layout,12.9166,77.6101,76,80,65,88,82,80,82,20000,34000,56000,72,25000,Startup hub, affordable, central
+Bangalore,Hebbal,13.0358,77.5970,78,82,70,82,82,80,80,22000,38000,62000,70,18000,Lake view, Outer Ring Road, IT
+Bangalore,JP Nagar,12.9077,77.5856,80,78,72,86,85,85,82,19000,33000,54000,72,20000,South Bangalore, peaceful, metro upcoming
+Hyderabad,Gachibowli,17.4400,78.3489,80,78,68,88,85,82,85,20000,35000,58000,72,18000,IT hub, HITEC City proximity, DLF
+Hyderabad,Banjara Hills,17.4156,78.4347,82,75,72,90,88,85,90,35000,58000,95000,80,15000,Posh, embassies, restaurants, premium
+Hyderabad,Jubilee Hills,17.4325,78.4071,84,72,75,88,90,88,90,40000,65000,110000,82,14000,Film industry, luxury, green
+Hyderabad,Madhapur,17.4484,78.3908,78,80,65,86,82,80,84,22000,38000,62000,74,20000,HITEC City, IT hub, cafes
+Hyderabad,Kondapur,17.4603,78.3607,76,78,68,85,80,80,80,18000,30000,50000,68,22000,IT corridor, affordable, gated
+Hyderabad,Kukatpally,17.4849,78.4138,74,82,60,88,80,80,78,16000,27000,44000,65,28000,JNTU, affordable, families
+Hyderabad,Begumpet,17.4434,78.4682,78,82,65,88,85,80,82,22000,38000,62000,74,20000,Airport road, embassies, central
+Hyderabad,Secunderabad,17.4399,78.4983,76,85,62,88,82,82,80,18000,30000,50000,68,25000,Cantonment, railway hub, historic
+Hyderabad,Miyapur,17.4967,78.3489,72,80,60,84,76,78,74,14000,24000,38000,62,28000,Metro terminus, affordable, growing
+Hyderabad,LB Nagar,17.3490,78.5515,70,80,58,85,75,76,72,12000,20000,33000,60,30000,South Hyderabad, affordable, metro
+Chennai,Anna Nagar,13.0850,80.2101,80,82,72,90,86,86,86,22000,38000,62000,74,22000,Posh, tower park, shopping
+Chennai,Adyar,13.0012,80.2565,80,78,72,88,88,85,86,25000,42000,70000,76,18000,IIT Madras, greenery, premium south
+Chennai,Velachery,12.9815,80.2209,76,82,65,88,82,82,80,18000,30000,50000,68,25000,IT hub, Phoenix Mall, metro
+Chennai,OMR,12.9010,80.2279,74,72,62,80,78,78,76,16000,28000,46000,65,20000,IT corridor, startups, beach nearby
+Chennai,Porur,13.0389,80.1573,74,75,65,82,80,80,76,16000,28000,45000,64,22000,IT companies, affordable, suburban
+Chennai,Nungambakkam,13.0569,80.2425,80,82,68,90,86,82,86,28000,48000,80000,78,20000,Consulates, upscale, central
+Chennai,T Nagar,13.0418,80.2341,75,85,52,92,84,80,84,22000,38000,62000,74,35000,Shopping capital, Pondy Bazaar
+Chennai,Perambur,13.1143,80.2329,70,82,55,85,76,76,72,14000,24000,38000,62,30000,North Chennai, affordable, metro
+Chennai,Sholinganallur,12.9010,80.2278,74,72,60,80,78,78,74,16000,27000,44000,64,20000,IT hub, affordable, OMR belt
+Chennai,Mylapore,13.0335,80.2680,78,80,65,90,84,82,84,25000,42000,70000,74,25000,Cultural hub, temples, heritage
+Pune,Koregaon Park,18.5362,73.8938,80,78,78,90,86,80,90,28000,48000,80000,78,18000,Pubs, Osho Ashram, expats, premium
+Pune,Baner,18.5590,73.7868,78,78,70,88,82,82,84,22000,38000,62000,74,20000,IT hub, malls, young crowd
+Pune,Kothrud,18.5074,73.8077,80,80,72,88,86,86,84,20000,35000,58000,74,22000,Education hub, peaceful, families
+Pune,Viman Nagar,18.5679,73.9143,78,80,65,88,82,82,82,22000,38000,62000,74,20000,Airport road, IT, cosmopolitan
+Pune,Hinjewadi,18.5912,73.7389,74,72,60,80,76,76,76,16000,27000,44000,64,18000,IT park, startups, affordable
+Pune,Wakad,18.5985,73.7707,74,74,62,82,78,78,76,18000,30000,50000,66,20000,IT corridor, growing, malls
+Pune,Aundh,18.5601,73.8076,80,80,72,88,85,84,84,22000,38000,62000,74,20000,Posh, fitness culture, cafes
+Pune,Hadapsar,18.5018,73.9260,72,75,60,85,78,78,74,15000,26000,42000,63,25000,IT hub, Magarpatta City, affordable
+Pune,Shivajinagar,18.5308,73.8474,78,84,65,90,85,82,84,24000,40000,65000,76,25000,City center, FC Road, college area
+Pune,Pimple Saudagar,18.6120,73.7986,74,76,65,84,78,80,76,18000,30000,48000,66,22000,Affordable, growing suburb, families
+Kolkata,Salt Lake,22.5726,88.4005,80,82,75,88,86,86,84,16000,26000,42000,68,18000,IT sector, planned, clean
+Kolkata,New Town,22.5846,88.4762,80,80,78,85,82,85,82,14000,24000,38000,65,15000,Eco Park, IT hub, planned city
+Kolkata,Ballygunge,22.5236,88.3612,82,78,72,88,88,85,86,22000,38000,62000,76,20000,Elite posh area, culture, south Kolkata
+Kolkata,Park Street,22.5509,88.3516,78,84,65,90,85,80,88,25000,42000,70000,78,25000,Restaurant street, nightlife, central
+Kolkata,Behala,22.5003,88.3112,72,76,65,82,76,76,72,12000,20000,32000,60,28000,South Kolkata, affordable, residential
+Kolkata,Dumdum,22.6398,88.4249,70,82,58,82,74,74,70,10000,17000,27000,58,30000,Airport area, affordable, metro
+Kolkata,Alipore,22.5362,88.3322,82,78,72,88,88,85,86,28000,48000,80000,78,15000,Most posh area, zoo, south Kolkata
+Kolkata,Howrah,22.5958,88.2636,68,80,52,85,74,74,70,10000,17000,27000,58,35000,Bridge, railway, affordable
+Kolkata,Jadavpur,22.4986,88.3720,76,78,70,85,80,82,78,14000,24000,38000,65,22000,University area, intellectual hub
+Kolkata,Rajarhat,22.6178,88.4602,76,78,72,82,78,78,76,12000,20000,32000,62,18000,New suburb, IT, growing
+Ahmedabad,Prahlad Nagar,23.0225,72.5080,80,78,70,90,85,84,86,18000,30000,50000,70,18000,Corporate hub, malls, upscale west
+Ahmedabad,Bodakdev,23.0300,72.5060,80,75,68,88,84,84,84,20000,34000,56000,72,16000,Posh, SG Highway, restaurants
+Ahmedabad,Satellite,23.0215,72.5246,80,78,70,88,85,84,85,22000,38000,62000,74,18000,Upscale, SG Highway, malls
+Ahmedabad,Navrangpura,23.0293,72.5618,78,82,65,90,84,83,85,18000,30000,50000,72,22000,City center, cafes, young crowd
+Ahmedabad,Maninagar,22.9960,72.6050,72,80,58,85,78,78,74,12000,20000,32000,62,28000,Traditional area, east Ahmedabad
+Ahmedabad,Bopal,23.0353,72.4677,76,72,68,82,78,80,76,14000,24000,38000,64,18000,Growing suburb, affordable, green
+Ahmedabad,Chandkheda,23.1143,72.5944,72,78,62,82,76,78,72,12000,20000,32000,60,25000,Affordable, north Ahmedabad
+Ahmedabad,Vastrapur,23.0375,72.5288,80,78,70,88,85,84,84,18000,30000,50000,72,18000,Lake, upscale, SG Highway
+Jaipur,Malviya Nagar,26.8466,75.8074,78,78,68,88,82,82,82,14000,24000,38000,65,20000,IT hub, modern, malls
+Jaipur,Vaishali Nagar,26.9124,75.7366,78,75,68,86,82,82,82,14000,24000,38000,65,18000,Posh west Jaipur, peaceful
+Jaipur,C-Scheme,26.9124,75.8069,80,80,70,90,85,82,86,18000,30000,50000,72,18000,Central posh area, embassies
+Jaipur,Mansarovar,26.8600,75.7719,76,78,65,86,80,80,78,12000,20000,32000,62,22000,Largest residential, metro
+Jaipur,Raja Park,26.9167,75.8233,75,78,65,85,80,80,78,12000,20000,32000,62,22000,Central, affordable, markets nearby
+Jaipur,Tonk Road,26.8479,75.8193,72,75,60,82,76,76,72,11000,18000,29000,60,22000,South Jaipur, affordable, growing
+Jaipur,Jagatpura,26.8214,75.8416,72,72,60,80,74,76,70,10000,17000,27000,58,20000,Developing, affordable, IT upcoming
+Surat,Athwa,21.1779,72.8316,78,78,65,88,82,80,82,14000,24000,38000,66,22000,Upscale, city center, malls
+Surat,Vesu,21.1477,72.7895,78,75,68,85,80,80,80,13000,22000,35000,64,18000,Posh, growing, diamond biz
+Surat,Adajan,21.2023,72.7925,76,76,65,85,78,80,76,12000,20000,32000,62,22000,Residential, families, west Surat
+Surat,Althan,21.1523,72.7964,72,72,62,80,76,76,72,11000,18000,29000,60,20000,Affordable, south Surat, quiet
+Lucknow,Gomti Nagar,26.8638,80.9950,78,78,70,88,82,82,82,12000,20000,32000,62,20000,IT hub, planned, malls, modern
+Lucknow,Hazratganj,26.8500,80.9462,76,82,65,90,82,80,84,16000,28000,45000,70,28000,City center, colonial, shopping
+Lucknow,Aliganj,26.8786,80.9476,75,78,65,86,80,80,78,12000,20000,32000,63,22000,Family area, affordable, north
+Lucknow,Indira Nagar,26.8799,81.0095,76,78,65,85,80,80,78,12000,20000,32000,63,22000,East Lucknow, IT, affordable
+Lucknow,Vibhuti Khand,26.8627,80.9991,78,76,68,85,80,82,80,14000,24000,38000,65,18000,Gomti Nagar extension, posh
+Nagpur,Dharampeth,21.1424,79.0719,78,78,68,88,84,84,82,12000,20000,32000,63,20000,Elite area, MLA colony, central
+Nagpur,Sadar,21.1533,79.0822,76,80,65,88,82,80,80,14000,24000,38000,66,25000,Commercial hub, restaurants
+Nagpur,Civil Lines,21.1553,79.0888,80,78,70,88,85,84,84,16000,27000,44000,68,18000,Posh, courts area, wide roads
+Nagpur,Wathoda,21.1012,79.1412,70,72,60,78,72,74,68,8000,13000,21000,56,20000,Affordable east Nagpur
+Indore,Vijay Nagar,22.7446,75.8874,78,78,68,90,82,82,84,12000,20000,32000,64,22000,IT hub, premium, malls
+Indore,Palasia,22.7179,75.8714,78,80,65,88,82,80,82,14000,24000,38000,66,25000,City center, premium, Treasure Island
+Indore,Scheme 54,22.7538,75.9078,76,75,65,85,80,80,78,12000,20000,32000,63,20000,IT companies, growing, planned
+Indore,Rajendra Nagar,22.7059,75.8974,74,76,63,84,78,78,74,10000,17000,27000,60,22000,South Indore, peaceful, families
