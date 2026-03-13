@@ -4,9 +4,6 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import folium
-from streamlit_folium import st_folium
-from folium.plugins import HeatMap
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -105,11 +102,6 @@ st.markdown("""
   /* Sidebar hidden — not used in this layout */
   [data-testid="stSidebar"] { display: none !important; }
   [data-testid="collapsedControl"] { display: none !important; }
-
-  /* Hide map attribution watermarks */
-  .leaflet-control-attribution,
-  .leaflet-bottom.leaflet-right,
-  .folium-map .leaflet-control-attribution { display: none !important; }
 
   /* Password modal */
   .pw-overlay {
@@ -426,61 +418,11 @@ def city_comparison_chart(cities_df, metric, city_list):
 
 
 # ─────────────────────────────────────────────────────────────
-# MAP
-# ─────────────────────────────────────────────────────────────
-def build_map(df_scored, heat_col='overall_score'):
-    if df_scored.empty:
-        return None
-    lat_c = df_scored['latitude'].mean()
-    lon_c = df_scored['longitude'].mean()
-    m = folium.Map(location=[lat_c, lon_c], zoom_start=12,
-                   tiles='CartoDB dark_matter')
-
-    # Heatmap layer
-    heat_data = df_scored[['latitude','longitude', heat_col]].dropna()
-    heat_data = heat_data[heat_data['latitude'] != 0]
-    if not heat_data.empty:
-        max_val = heat_data[heat_col].max() or 1
-        HeatMap(
-            heat_data[['latitude','longitude', heat_col]].values.tolist(),
-            radius=30, blur=20, max_zoom=14,
-            gradient={0.2: '#e84040', 0.5: '#f5a623', 0.8: '#e8622a', 1.0: '#c94f8a'}
-        ).add_to(m)
-
-    # Top 12 pins
-    top12 = df_scored[df_scored['latitude'] != 0].head(12)
-    for i, (_, row) in enumerate(top12.iterrows()):
-        color = '#e8622a' if i < 3 else '#f5a623' if i < 7 else '#8c95aa'
-        popup_html = f"""
-        <div style="font-family:sans-serif;min-width:160px">
-          <div style="font-weight:700;font-size:14px;color:#e8622a">#{i+1} {row['neighborhood']}</div>
-          <div style="color:#666;font-size:12px;margin-top:2px">{row['city']}</div>
-          <hr style="border-color:#eee;margin:6px 0">
-          <div style="font-size:12px"><b>Score:</b> {row['overall_score']}/100</div>
-          <div style="font-size:12px"><b>Safety:</b> {int(row.get('safety_score',0))}</div>
-          <div style="font-size:12px"><b>Transit:</b> {int(row.get('transport_score',0))}</div>
-          <div style="font-size:12px"><b>2BHK Rent:</b> ₹{int(row.get('avg_rent_2bhk',0)):,}/mo</div>
-          {f'<div style="font-size:11px;color:#888;margin-top:4px;font-style:italic">{row["known_for"][:60]}...</div>' if row.get('known_for') else ''}
-        </div>
-        """
-        folium.CircleMarker(
-            location=[row['latitude'], row['longitude']],
-            radius=10 + (12 - i) * 0.8,
-            color=color, fill=True, fill_color=color, fill_opacity=0.8,
-            popup=folium.Popup(popup_html, max_width=220),
-            tooltip=f"#{i+1} {row['neighborhood']} — Score: {row['overall_score']}"
-        ).add_to(m)
-
-    return m
-
-
-# ─────────────────────────────────────────────────────────────
-# TAB 1: FILTERS (replaces sidebar)
+# TAB 1: FILTERS
 # ─────────────────────────────────────────────────────────────
 def tab_filters(cities_df, nb_df, rentals_df):
-    """City selector + all filters — renders inside Tab 1."""
+    """City selector + all filters — renders inside Tab 0."""
 
-    # ── Welcome banner ──────────────────────────────────────────
     st.markdown("""
     <div style="background:linear-gradient(135deg,#1a1d25,#13151a);border:1px solid #272b38;
                 border-radius:16px;padding:2rem 2.5rem;margin-bottom:2rem">
@@ -489,7 +431,6 @@ def tab_filters(cities_df, nb_df, rentals_df):
       </div>
       <div style="color:#5e6880;font-size:0.9rem;max-width:600px">
         Choose your city, set your priorities, and we'll score every neighborhood for you.
-        Takes about 10 seconds.
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -497,7 +438,6 @@ def tab_filters(cities_df, nb_df, rentals_df):
     left, right = st.columns([1, 1], gap="large")
 
     with left:
-        # ── City ────────────────────────────────────────────────
         st.markdown('<div class="sec-label">Select City</div>', unsafe_allow_html=True)
         city_options = sorted(nb_df['city'].dropna().unique().tolist())
         selected_city = st.selectbox('City', city_options,
@@ -508,7 +448,6 @@ def tab_filters(cities_df, nb_df, rentals_df):
                     f'{nb_in_city} neighborhoods available in {selected_city}</div>',
                     unsafe_allow_html=True)
 
-        # ── Priorities ──────────────────────────────────────────
         st.markdown('<div class="sec-label">What matters to you?</div>', unsafe_allow_html=True)
         pref_options = [
             ('💰 Low Cost', 'cost'), ('🛡 Safety', 'safety'),
@@ -524,7 +463,6 @@ def tab_filters(cities_df, nb_df, rentals_df):
             if col.checkbox(label, value=default, key=f'pref_{key}'):
                 selected_prefs.append(key)
 
-        # ── Budget ──────────────────────────────────────────────
         st.markdown('<div class="sec-label" style="margin-top:1.4rem">Max Rent Budget / Month</div>',
                     unsafe_allow_html=True)
         budget = st.slider('Budget', 5000, 200000, 40000, step=1000,
@@ -536,7 +474,6 @@ def tab_filters(cities_df, nb_df, rentals_df):
             unsafe_allow_html=True)
 
     with right:
-        # ── Importance sliders ──────────────────────────────────
         st.markdown('<div class="sec-label">Fine-tune Importance</div>', unsafe_allow_html=True)
         w_cost    = st.slider('Affordability weight', 1, 10, 8, key='w_cost')
         w_safety  = st.slider('Safety weight',        1, 10, 7, key='w_safety')
@@ -545,7 +482,7 @@ def tab_filters(cities_df, nb_df, rentals_df):
 
         st.markdown('<br>', unsafe_allow_html=True)
 
-        # ── Source Files button (password gate only — editor renders full-width below) ──
+        # ── Source Files (password-protected) ───────────────────
         st.markdown('<div class="sec-label">Admin</div>', unsafe_allow_html=True)
         if st.button("🗂 Source Files", use_container_width=True, key='src_btn'):
             st.session_state['show_src_panel'] = not st.session_state.get('show_src_panel', False)
@@ -644,7 +581,6 @@ def tab_filters(cities_df, nb_df, rentals_df):
 
     st.markdown('<br>', unsafe_allow_html=True)
 
-    # ── Big CTA button ──────────────────────────────────────────
     _, btn_col, _ = st.columns([1, 2, 1])
     with btn_col:
         analyze = st.button('🔍  Find Best Neighborhoods', use_container_width=True,
@@ -654,46 +590,7 @@ def tab_filters(cities_df, nb_df, rentals_df):
     return selected_city, selected_prefs, weights, budget, analyze
 
 
-# ─────────────────────────────────────────────────────────────
-# TAB: MAP
-# ─────────────────────────────────────────────────────────────
-def tab_map(scored_df):
-    col1, col2 = st.columns([3, 1])
-    with col2:
-        st.markdown('<div class="sec-label">Map Layer</div>', unsafe_allow_html=True)
-        heat_options = {
-            'Overall Score': 'overall_score',
-            'Affordability': 'cost_score',
-            'Safety':        'safety_score',
-            'Greenery':      'greenery_score',
-            'Transit':       'transport_score',
-        }
-        heat_choice = st.radio('', list(heat_options.keys()), label_visibility='collapsed')
-        heat_col = heat_options[heat_choice]
 
-        st.markdown('<div class="sec-label">Top Areas</div>', unsafe_allow_html=True)
-        for i, (_, row) in enumerate(scored_df.head(8).iterrows()):
-            rank_color = '#e8622a' if i < 3 else '#8c95aa'
-            st.markdown(f"""
-            <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #272b38">
-              <div style="font-family:Syne,sans-serif;font-weight:800;color:{rank_color};font-size:0.9rem;min-width:24px">#{i+1}</div>
-              <div>
-                <div style="font-size:0.82rem;font-weight:600;color:#dde3ee">{row['neighborhood']}</div>
-                <div style="font-size:0.7rem;color:#5e6880">{row['overall_score']}/100 · ₹{int(row['avg_rent_2bhk']):,}</div>
-              </div>
-            </div>
-            """, unsafe_allow_html=True)
-
-    with col1:
-        m = build_map(scored_df, heat_col)
-        if m:
-            st_folium(m, width=None, height=520, returned_objects=[])
-        else:
-            st.info("No location data available for the selected city.")
-
-
-# ─────────────────────────────────────────────────────────────
-# TAB: RANKINGS
 # ─────────────────────────────────────────────────────────────
 def tab_rankings(scored_df, budget):
     in_budget = scored_df[scored_df['in_budget']].shape[0]
@@ -929,6 +826,17 @@ def tab_rentals(rentals_df, selected_city, budget, scored_df):
         for col, (_, l) in zip(cols, chunk.iterrows()):
             over = l['rent_per_month'] > budget
             fur_color = '#e8622a' if l.get('furnishing') == 'Fully Furnished' else '#f5a623' if l.get('furnishing') == 'Semi-Furnished' else '#5e6880'
+            raw_url  = str(l.get('listing_url', '')).strip()
+            src_name = str(l.get('source', 'View Listing')).strip()
+            if raw_url and raw_url.startswith('http'):
+                listing_link_html = (
+                    f'<a href="{raw_url}" target="_blank" rel="noopener noreferrer" '
+                    f'style="display:block;margin-top:8px;padding:7px;background:#c94f8a;'
+                    f'color:#fff;text-align:center;border-radius:7px;text-decoration:none;'
+                    f'font-size:0.78rem;font-weight:700">🔗 View on {src_name}</a>'
+                )
+            else:
+                listing_link_html = ""
             amenities = str(l.get('amenities','')).replace('|',',').split(',')
             amenities = [a.strip() for a in amenities if a.strip()][:4]
             typeRaw = str(l.get('property_type','')).lower()
@@ -953,7 +861,7 @@ def tab_rentals(rentals_df, selected_city, budget, scored_df):
                   {'<div style="font-size:0.7rem;color:'+fur_color+';margin-bottom:5px">'+str(l.get('furnishing',''))+'</div>' if l.get('furnishing') else ''}
                   {'<div style="font-size:0.7rem;color:#5e6880">'+' · '.join(amenities)+'</div>' if amenities else ''}
                   {'<div style="font-size:0.73rem;color:#5e6880;margin-top:6px;padding-top:6px;border-top:1px solid #272b38;line-height:1.5">'+str(l.get('description',''))[:100]+'...</div>' if l.get('description') else ''}
-                  {'<a href="'+str(l.get('listing_url',''))+'" target="_blank" style="display:block;margin-top:8px;padding:7px;background:#c94f8a;color:#fff;text-align:center;border-radius:7px;text-decoration:none;font-size:0.78rem;font-weight:700">🔗 View on '+str(l.get('source','Source'))+'</a>' if l.get('listing_url') else ''}
+                  {listing_link_html}
                 </div>
                 """, unsafe_allow_html=True)
 
@@ -1013,7 +921,7 @@ def tab_city_compare(cities_df, nb_df):
     # Full data table
     with st.expander("📋 Full City Data Table"):
         subset = cities_df[cities_df['city'].isin(selected)].set_index('city')
-        st.dataframe(subset.style.background_gradient(cmap='Oranges', axis=0), use_container_width=True)
+        st.dataframe(subset, use_container_width=True)
 
 
 # ─────────────────────────────────────────────────────────────
@@ -1087,10 +995,9 @@ def main():
         "📊 Insights",
         "🏠 Rentals",
         "🏙 City Compare",
-        "🗺 Map",
     ]
 
-    tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs(TAB_LABELS)
+    tab0, tab1, tab2, tab3, tab4 = st.tabs(TAB_LABELS)
 
     # ── Tab 0: Filters ─────────────────────────────────────────
     with tab0:
@@ -1165,12 +1072,6 @@ def main():
 
     with tab4:
         tab_city_compare(cities_df, nb_df)
-
-    with tab5:
-        if scored_df.empty:
-            st.info("Run a search from the **⚙️ Filters & City** tab first.")
-        else:
-            tab_map(scored_df)
 
     # Raw data expander at bottom
     with st.expander("📋 Raw Data Explorer"):
